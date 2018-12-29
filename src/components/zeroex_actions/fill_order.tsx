@@ -4,7 +4,7 @@ import { Button, PanelBlock, TextArea } from 'bloomer';
 import * as React from 'react';
 
 import { parseJSONSignedOrder } from '../../utils';
-import { OpenModule } from '../open_module';
+//import { OpenModule } from '../open_module';
 import { PanelBlockField } from '../panel_block_field';
 
 interface Props {
@@ -35,7 +35,6 @@ export class FillOrder extends React.Component<Props, FillOrderState> {
                     <div>
                         Orders are filled when a taker submits them to the blockchain. This example executes a
                         fillOrder, filling the entire amount of the order.
-                        <OpenModule filePath="/src/components/zeroex_actions/fill_order.tsx" lineNumber={20} />
                     </div>
                 </PanelBlock>
                 <PanelBlockField label="Order">

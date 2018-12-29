@@ -12,14 +12,14 @@ class NavigationBar extends Component {
     render(){
         return(
       <Router>    
-      <div>
+      <div className ="has-text-centered content">
         Osun DEX: 
-        <ul>
-        <Link to = "/">Home</Link>
+        <ul >
+        <Link to = "/">Home        </Link>
         <Route path="/Markets" component={Markets}/>
-        <Link to = "/Markets">Markets</Link>
+        <Link to = "/Markets">Markets        </Link>
         <Route path="/OsunTokenSale" component={OsunTokenSale}/>
-        <Link to = "/OsunTokenSale">Osun Token Sale</Link>
+        <Link to = "/OsunTokenSale">Token Sale</Link>
         </ul>
     </div>
     </Router>

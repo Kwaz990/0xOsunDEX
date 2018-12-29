@@ -81,8 +81,7 @@ export class ZeroExActions extends React.Component<Props, ZeroExActionsState> {
         });
         return (
             <Content>
-                <Subtitle isSize={6}>Try 0x.js</Subtitle>
-                <p> Below are common examples of 0x.js actions you will come across when creating your dApp </p>
+                <Subtitle isSize={6}> Order Box </Subtitle>
                 <Columns>
                     <Column isSize={{ mobile: 11, default: 7 }}>
                         <Panel>

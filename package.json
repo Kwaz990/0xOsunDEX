@@ -26,7 +26,8 @@
     "react-dom": "^16.5.2",
     "react-router-dom": "^4.3.1",
     "react-scripts-ts": "^2.13.0",
-    "react-toast-notifications": "^1.3.0"
+    "react-toast-notifications": "^1.3.0",
+    "react-transition-group": "^2.5.2"
   },
   "devDependencies": {
     "@0x/tslint-config": "^1.0.9",

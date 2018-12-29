@@ -3,7 +3,7 @@ import { Web3Wrapper } from '@0x/web3-wrapper';
 import { Button, Control, Field, Input, PanelBlock } from 'bloomer';
 import * as React from 'react';
 
-import { OpenModule } from '../open_module';
+//import { OpenModule } from '../open_module';
 import { PanelBlockField } from '../panel_block_field';
 
 interface Props {
@@ -49,7 +49,6 @@ export class WrapEth extends React.Component<Props, WrapEthState> {
                     <div>
                         ETH is not an ERC20 token and it must first be wrapped to be used in 0x. ETH can be wrapped to
                         become wETH and wETH can be unwrapped retrieve ETH.
-                        <OpenModule filePath="/src/components/zeroex_actions/wrap_eth.tsx" lineNumber={23} />
                     </div>
                 </PanelBlock>
                 <PanelBlockField label="Amount">

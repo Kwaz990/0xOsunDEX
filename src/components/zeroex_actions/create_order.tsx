@@ -15,7 +15,7 @@ import * as React from 'react';
 
 import { TOKENS, TOKENS_BY_NETWORK } from '../../tokens';
 import { NULL_ADDRESS, ZERO } from '../../utils';
-import { OpenModule } from '../open_module';
+//import { OpenModule } from '../open_module';
 import { PanelBlockField } from '../panel_block_field';
 
 interface Props {
@@ -147,7 +147,6 @@ export class CreateOrder extends React.Component<Props, CreateOrderState> {
                     <div>
                         Creates a 0x order, specifying the Maker and Taker tokens and their amounts. Orders are signed
                         by the maker. Takers find these signed orders and "fill" them by submitting to the blockchain.
-                        <OpenModule filePath="/src/components/zeroex_actions/create_order.tsx" lineNumber={51} />
                     </div>
                 </PanelBlock>
                 {makerTokenRender}

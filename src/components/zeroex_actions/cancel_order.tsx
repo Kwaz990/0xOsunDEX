@@ -3,7 +3,7 @@ import { Button, PanelBlock, TextArea } from 'bloomer';
 import * as React from 'react';
 
 import { parseJSONSignedOrder } from '../../utils';
-import { OpenModule } from '../open_module';
+//import { OpenModule } from '../open_module';
 import { PanelBlockField } from '../panel_block_field';
 
 interface Props {
@@ -44,7 +44,6 @@ export class CancelOrder extends React.Component<Props, CancelOrderState> {
                     <div>
                         Orders natuarally expire after the specified expiry time has passed. To cancel an order which
                         has not passed the expiry time, it must be cancelled on chain by calling cancelOrder.
-                        <OpenModule filePath="/src/components/zeroex_actions/cancel_order.tsx" lineNumber={19} />
                     </div>
                 </PanelBlock>
                 <PanelBlockField label="Order">

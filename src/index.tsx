@@ -11,7 +11,7 @@ import { Account } from './components/account';
 import { Faucet } from './components/faucet';
 import { InstallMetamask } from './components/install_metamask';
 import { Nav } from './components/nav';
-import { Welcome } from './components/welcome';
+//import { Welcome } from './components/welcome';
 import { ZeroExActions } from './components/zeroex_actions';
 import { networkToRPCURI } from './utils';
 //import "./App.css";
@@ -19,8 +19,9 @@ import Description from "./components/Description";
 
 import { BrowserRouter as Router } from "react-router-dom";
 //import PropTypes from "prop-types";
-import NavigationBar from "./components/NavigationBar";
+//import NavigationBar from "./components/NavigationBar";
 import AvaialbleMarkets from "./components/AvailableMarkets";
+import NavContainer from "./components/Nav_Container";
 
 
 
@@ -52,8 +53,7 @@ export class MainApp extends React.Component<{}, AppState> {
                 <Content className="container">
                     {this.state.web3 && (
                         <div>
-                            <NavigationBar />
-                            <Welcome />
+                            <NavContainer />
                             <Description />
                             <AvaialbleMarkets />
                             <ToastProvider>

@@ -3,7 +3,7 @@ import { Button, Input, PanelBlock, TextArea } from 'bloomer';
 import * as React from 'react';
 
 import { parseJSONSignedOrder } from '../../utils';
-import { OpenModule } from '../open_module';
+//import { OpenModule } from '../open_module';
 import { PanelBlockField } from '../panel_block_field';
 
 interface Props {
@@ -50,8 +50,7 @@ export class GetOrderInfo extends React.Component<Props, OrderInfoState> {
             <div>
                 <PanelBlock>
                     <div>
-                        Retrieve information about the Order from the Exchange contract.
-                        <OpenModule filePath="/src/components/zeroex_actions/order_info.tsx" lineNumber={21} />
+                        Retrieve information about the Order from the Exchange contract
                     </div>
                 </PanelBlock>
                 <PanelBlockField label="Order">

@@ -55,11 +55,11 @@ export class Nav extends React.Component<NavProps, NavState> {
                 <NavbarBrand>
                     <NavbarItem>
                         <Image
-                            isSize="16x16"
-                            src="https://0xproject.com/images/favicon/favicon-2-32x32.png"
+                            isSize="32x32"
+                            src="./images/Osun.png"
                             style={{ marginLeft: 0, marginRight: 10 }}
                         />
-                        <strong> 0x Sandbox </strong>
+                        <strong> Osun DEX </strong>
                         <NavbarItem>{networkRender}</NavbarItem>
                     </NavbarItem>
                 </NavbarBrand>

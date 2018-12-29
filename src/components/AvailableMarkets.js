@@ -113,16 +113,16 @@ class AvailableMarkets extends Component {
         else {
             return (
                 <Router>
-                <div class="Available Markets">
+                <div className="Available Markets">
                     <table>
                         <thead>
-                            <tr class="no-select">
-                                <th class="token">TOKEN</th>
-                                <th class="volume">VOLUME</th>
+                            <tr className="no-select">
+                                <th className="has-text-centered content">TOKEN</th>
+
                             </tr>
                         </thead>
                         <tbody>
-                        <tr data-type="h">
+                        <tr data-type="h" className = "has-text-centered content">
                         {radarMarkets.map(market => (
                                 <li key={market[0]}>
                                 <Link to = {"/Markets/" + `${market[0]}`}>{market[0]}</Link>
