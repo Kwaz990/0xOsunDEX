@@ -22,6 +22,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 //import NavigationBar from "./components/NavigationBar";
 import AvaialbleMarkets from "./components/AvailableMarkets";
 import NavContainer from "./components/Nav_Container";
+import { Container, Box } from 'bloomer';
+
 
 
 
@@ -55,7 +57,13 @@ export class MainApp extends React.Component<{}, AppState> {
                         <div>
                             <NavContainer />
                             <Description />
+
+                            <Container>
+                            <Box isFullWidth={false} hasTextAlign="left">
                             <AvaialbleMarkets />
+                            </Box>
+                            </Container>
+
                             <ToastProvider>
                                 <AccountWithNotifications
                                     erc20TokenWrapper={this.state.contractWrappers.erc20Token}

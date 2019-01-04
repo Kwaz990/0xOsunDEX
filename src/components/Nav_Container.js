@@ -8,7 +8,7 @@ import Markets from './Markets';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 
-
+//         <Route path="/Markets" component={Markets} />
 function NavContainer({ location }) {
         return(
             <div className ="has-text-centered content">
@@ -23,7 +23,6 @@ function NavContainer({ location }) {
         Osun DEX: 
         <ul >
         <Link to = "/">Home        </Link>
-        <Route path="/Markets" component={Markets} />
         <Link to = "/Markets">Markets        </Link>
         <Route path="/OsunTokenSale" component={OsunTokenSale} />
         <Link to = "/OsunTokenSale">Token Sale</Link>

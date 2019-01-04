@@ -104,7 +104,11 @@ class AvailableMarkets extends Component {
 
     }
 */
-
+/*
+<Route path={"/Markets/" + `${market[0]}`} render = {marketRedirect => (
+                                    <Markets market={market[0]} marketRedirect = {marketRedirect} /> 
+                                )} /> 
+*/
     render() {
         var { isLoaded, radarMarkets } = this.state;
         if (isLoaded) {
@@ -114,6 +118,11 @@ class AvailableMarkets extends Component {
             return (
                 <Router>
                 <div className="Available Markets">
+                    <Route path="/Markets/:symbol" render={function(match) {
+                        console.log(match.match.params);
+                        return(<Markets market={match.match.params.symbol} marketRedirect={null} />)
+                    }} />
+                    
                     <table>
                         <thead>
                             <tr className="no-select">
@@ -125,10 +134,10 @@ class AvailableMarkets extends Component {
                         <tr data-type="h" className = "has-text-centered content">
                         {radarMarkets.map(market => (
                                 <li key={market[0]}>
-                                <Link to = {"/Markets/" + `${market[0]}`}>{market[0]}</Link>
-                                <Route path={"/Markets/" + `${market[0]}`} render = {marketRedirect => (
-                                    <Markets market={market[0]} marketRedirect = {marketRedirect} /> 
-                                )} />                              
+                                <Link to = {"/Markets/" + `${market[0]}`}
+                                    onClick={this.forceUpdate}
+                                >{market[0]}</Link>
+                                                             
                                 </li>
                                 ))}
                             </tr>
