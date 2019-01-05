@@ -1,23 +1,82 @@
 import React, { Component } from "react";
-import Chart from "react-apexcharts";
+import ApexChart from "react-apexcharts";
 
 
 // THis is a dummy list that allows you to have data points <= length of the dummy list
 // this is necessary for the API pull
 var dumbshit = []
 for (let i = 0; i < 1000; i++) {
-    dumbshit.push([0, [0,0,0,0]])
+    dumbshit.push([0, [0, 0, 0, 0]])
 }
 
 class Chart1 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
             isLoading: false,
             options: {
                 chart: {
-                    id: "candlestick"
+                    id: "MainChart",
+                    width: '100%',
+                    animations: {
+                        enabled: false,
+                        easing: 'easeinout',
+                        speed: 800,
+                        animateGradually: {
+                            enabled: true,
+                            delay: 150
+                        },
+                        dynamicAnimation: {
+                            enabled: true,
+                            speed: 350
+                        }
+                    },
+                    xaxis: {
+                        type: 'datetime',
+                        labels: {
+                            show: true,
+                            rotate: -45,
+                            rotateAlways: false,
+                            hideOverlappingLabels: true,
+                            showDuplicates: false,
+                            trim: true,
+                            minHeight: undefined,
+                            maxHeight: 120,
+                            /*
+                            datetimeFormatter: {
+                                year: 'yyyy',
+                                month: "MMM 'yy",
+                                day: 'dd MMM',
+                                hour: 'HH:mm',
+                            }
+                            */
+                        }
+                    },
+                    title: {
+                        text: this.props.market,
+                        align: "left"
+                    },
+                    dataLabels: {
+                        enabled: false,
+                        formatter: function (val, opts) {
+                            return val
+                        },
+                        textAnchor: 'middle',
+                        offsetX: 0,
+                        offsetY: 0,
+                        style: {
+                            fontSize: '14px',
+                            fontFamily: 'Helvetica, Arial, sans-serif',
+                            colors: undefined
+                        },
+                        dropShadow: {
+                            enabled: false,
+                            top: 1,
+                            left: 1,
+                            blur: 1,
+                            opacity: 0.45
+                        }
+                    }
                 },
             },
             series: [{
@@ -45,13 +104,13 @@ class Chart1 extends Component {
         var marketLink = this.props.market;
         // var marketLink="ZRX-WETH";
         var graph = this;
-        var url ="https://api.radarrelay.com/v2/markets/" + marketLink + "/candles"
+        var url = "https://api.radarrelay.com/v2/markets/" + marketLink + "/candles"
         var oldurl = "https://api.radarrelay.com/v2/markets/ZRX-WETH/candles"
         console.log(marketLink)
-        if (typeof(marketLink) === 'string' && marketLink !== 'undefined') {
+        if (typeof (marketLink) === 'string' && marketLink !== 'undefined') {
             console.log("True", marketLink)
             fetch(url)
-        // fetch("https://api.radarrelay.com/v2/markets/" + marketLink + "/candles")
+                // fetch("https://api.radarrelay.com/v2/markets/" + marketLink + "/candles")
                 .then(function (response) {
                     console.log(response.headers)
                     // console.log(response.text())
@@ -64,7 +123,7 @@ class Chart1 extends Component {
                             Number(bar.low),
                             Number(bar.close)
                         ]]
-                        ))
+                    ))
 
                     return x;
                 }).then(function (bar) {
@@ -80,36 +139,24 @@ class Chart1 extends Component {
                         }]
                     });
                 })
-            }
-        };
+        }
+    };
 
 
     render(props) {
-      const marketRedirect = this.props.marketRedirect;
+        var value = String(this.props.market)
+        const marketRedirect = this.props.marketRedirect;
         return (
-            <div className="app">
-                <div className="row">
-                    <div className="mixed-chart">
-                        <Chart
-                            options={this.state.options}              
-                            series={this.state.series}
-                            type="candlestick"
-                            width="600"
-                        />
-                    </div>
-                </div>
-            </div>
-        );
-    }
-}
-
-/*
-<Chart
+                    <div id="chartMain">
+                        <ApexChart
                             options={this.state.options}
                             series={this.state.series}
                             type="candlestick"
-                            width="500"
+                            width="800"
                         />
-                        */
+                    </div>
 
+        );
+    }
+}
 export default Chart1;

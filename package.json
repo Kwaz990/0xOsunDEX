@@ -20,6 +20,7 @@
     "bulma": "^0.7.2",
     "codesandbox-api": "^0.0.20",
     "ethereum-types": "^1.1.1",
+    "flexbox-react": "^4.4.0",
     "lodash": "4.17.5",
     "react": "^16.5.2",
     "react-apexcharts": "^1.2.0",

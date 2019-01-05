@@ -31,7 +31,7 @@ class Markets extends Component {
     render(){
         var value = String(this.props.market)
         return(
-      <div>
+      <div className="chart">
           <Chart1 market={value} />
 
 

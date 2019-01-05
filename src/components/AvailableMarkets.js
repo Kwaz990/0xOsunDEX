@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import Route from 'react-router-dom/Route';
-
-import Markets from './Markets';
+import Chart1 from './chart2';
+//import Markets from './Markets';
 //import Tokens from './Tokens/all';
 
 
@@ -117,15 +117,15 @@ class AvailableMarkets extends Component {
         else {
             return (
                 <Router>
-                <div className="Available Markets">
+                <div className="available-markets">
                     <Route path="/Markets/:symbol" render={function(match) {
                         console.log(match.match.params);
-                        return(<Markets market={match.match.params.symbol} marketRedirect={null} />)
+                        return(<Chart1 market={match.match.params.symbol} marketRedirect={null} />)
                     }} />
                     
                     <table>
                         <thead>
-                            <tr className="no-select">
+                            <tr className="market-list">
                                 <th className="has-text-centered content">TOKEN</th>
 
                             </tr>

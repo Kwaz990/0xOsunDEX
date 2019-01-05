@@ -56,7 +56,7 @@ export class Nav extends React.Component<NavProps, NavState> {
                     <NavbarItem>
                         <Image
                             isSize="32x32"
-                            src="./images/Osun.png"
+                            src= "./images/Osun.png"
                             style={{ marginLeft: 0, marginRight: 10 }}
                         />
                         <strong> Osun DEX </strong>
