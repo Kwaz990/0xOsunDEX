@@ -1,15 +1,29 @@
-.available-markets {
+body {
+    padding: 0;
+    font-family: sans-serif;
+  }
+.availableMarketsContainer { 
     display: flex; /* or inline-flex */
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: flex-start;
-  }
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: flex-start
 
-  .chart { 
-        display: flex; /* or inline-flex */
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: flex-start;
+      }
+    
+.marketList {
+    flex-grow: 3;
+    flex-shrink: 4;
+    flex-basis:auto;
+    
+    }
+.chartView {
+    flex-grow: 1;
+    flex-shrink: 4;
+    flex-basis:auto;
 
-
-  }
+}
+.chart {
+    flex-grow: 2;
+    flex-shrink: 1;
+    flex-basis:auto;
+    }

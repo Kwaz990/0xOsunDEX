@@ -4,6 +4,7 @@ import Route from 'react-router-dom/Route';
 import Chart1 from './chart2';
 //import Markets from './Markets';
 //import Tokens from './Tokens/all';
+import "./UI.css";
 
 
 
@@ -17,7 +18,6 @@ class AvailableMarkets extends Component {
         this.state = {
           radarMarkets: [],
           isLoading: false,
-          radarVolumes: []
         };
       }
     
@@ -46,69 +46,7 @@ class AvailableMarkets extends Component {
           }.bind(this));
   
         }
-/*
-     //   function fetchVolume() { 
-          fetch('https://api.radarrelay.com/v2/markets/ZRX-WETH/stats')
-          .then(function(results) {
-            console.log(results);
-            return results.json();
-        }).then(data => {   
-            this.setState({
-                isLoaded: true,
-                radarVolumes: data
 
-
-            }}}
-
-*/
-
-        //   render={props => (
-        //     `${market[0]}`
-        // )}/>
-              //Loop through list of allowed tokens
-      //using the token ABI & contract address
-      //call the balanceOf method to see if this
-      //address carries the token, then list on UI
-      /*
-      Tokens.forEach((token) => {  
-        let contract = this.web3.eth.contract(token.abi);  
-        let erc20Token = contract.at(token.address);      
-        
-        let tokens = this.state.tokens;
-
-            this.setState({  
-                tokens  
-            })  
-          } 
-   )} 
-
-*/
-        /*
-        fetch('https://api.radarrelay.com/v2/markets').then(results => {
-            return results.json();
-        }).then(data => {
-            this.setState({
-                isLoaded: true,
-                items: data
-            })
-        
-        });
-
-        for (var i = 0; i < this.state.items.length; i ++) {
-            var obj = this.state.items[i];
-
-        };
-
-            })
-        });
-
-    }
-*/
-/*
-<Route path={"/Markets/" + `${market[0]}`} render = {marketRedirect => (
-                                    <Markets market={market[0]} marketRedirect = {marketRedirect} /> 
-                                )} /> 
-*/
     render() {
         var { isLoaded, radarMarkets } = this.state;
         if (isLoaded) {
@@ -117,17 +55,20 @@ class AvailableMarkets extends Component {
         else {
             return (
                 <Router>
-                <div className="available-markets">
+                <div className="availableMarketsContainer">
+                    <div className ="chartView">
                     <Route path="/Markets/:symbol" render={function(match) {
                         console.log(match.match.params);
-                        return(<Chart1 market={match.match.params.symbol} marketRedirect={null} />)
+                        return(
+                        <div className="chart">
+                        <Chart1 market={match.match.params.symbol} marketRedirect={null} />
+                        </div>)
                     }} />
-                    
-                    <table>
+                    </div>
+                    <table className= "marketList">
                         <thead>
-                            <tr className="market-list">
+                            <tr>
                                 <th className="has-text-centered content">TOKEN</th>
-
                             </tr>
                         </thead>
                         <tbody>

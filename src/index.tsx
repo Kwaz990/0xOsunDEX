@@ -16,20 +16,51 @@ import { ZeroExActions } from './components/zeroex_actions';
 import { networkToRPCURI } from './utils';
 //import "./App.css";
 import Description from "./components/Description";
-
+import "./index.css";
 import { BrowserRouter as Router } from "react-router-dom";
 //import PropTypes from "prop-types";
 //import NavigationBar from "./components/NavigationBar";
 import AvaialbleMarkets from "./components/AvailableMarkets";
 import NavContainer from "./components/Nav_Container";
 import { Container, Box } from 'bloomer';
+//import Chart1 from "./components/chart2";
+
+/*
+@type {{textAlign: React.CSSProperties}} 
+
+const styles = {
+    fontFamily: "sans-serif",
+    textAlign: "center",
+    paddingLeft: 30, 
+    paddingRight: 30, 
+    paddingBottom: 30
+  };
+  
+  const flexCont = {
+    display: "flex",
+    flexDirection: "row",
+    padding: 30
+  };
+*/
+
+/*
+
+style={{
+    fontFamily: "sans-serif",
+    textAlign: "center",
+    paddingLeft: 30,
+    paddingRight: 30,
+    paddingBottom: 30
+*/
 
 
-
-
-
-
-
+/* 
+{
+                                display: "flex",
+                                flexDirection: "row",
+                                padding: 30
+                            }
+                            */
 
 interface AppState {
     web3Wrapper?: Web3Wrapper;
@@ -50,37 +81,64 @@ export class MainApp extends React.Component<{}, AppState> {
         }
         return (
             <Router>
-            <div style={{ paddingLeft: 30, paddingRight: 30, paddingBottom: 30 }}>
-                <Nav web3Wrapper={this.state.web3Wrapper} />
-                <Content className="container">
-                    {this.state.web3 && (
-                        <div>
-                            <NavContainer />
-                            <Description />
-
-                            <Container>
-                            <Box isFullWidth={false} hasTextAlign="left">
-                            <AvaialbleMarkets />
-                            </Box>
-                            </Container>
-
-                            <ToastProvider>
-                                <AccountWithNotifications
-                                    erc20TokenWrapper={this.state.contractWrappers.erc20Token}
-                                    web3Wrapper={this.state.web3Wrapper}
-                                />
-                                <ZeroExActionsWithNotifications
-                                    contractWrappers={this.state.contractWrappers}
-                                    web3Wrapper={this.state.web3Wrapper}
-                                />
-                                <Faucet web3Wrapper={this.state.web3Wrapper} />
-                            </ToastProvider>
-                        </div>
-                    )}
-                    {!this.state.web3 && <InstallMetamask />}
-                </Content>
-                <Footer />
-            </div>
+                <div>
+                    <Nav web3Wrapper={this.state.web3Wrapper} />
+                    <Content>
+                        {this.state.web3 && (
+                            <div>
+                            <div className="container1">
+                                <div className="intro">
+                                <NavContainer />
+                                <Description />
+                                </div>
+                                </div>
+                                <div className="container2">
+                                <div className="availableMarkets">
+                                <Container>
+                                    <Box isFullWidth={false}>
+                                        <AvaialbleMarkets />
+                                    </Box>
+                                </Container>
+                                </div>
+                                </div>
+                                <div className="container3">
+                                <ToastProvider>
+                                    <div className="accounts">
+                                    <Container>
+                                        <Box>
+                                    <AccountWithNotifications
+                                        erc20TokenWrapper={this.state.contractWrappers.erc20Token}
+                                        web3Wrapper={this.state.web3Wrapper}
+                                    />
+                                    </Box>
+                                    </Container>
+                                    </div>
+                                    <div className="orderBox">
+                                    <Container>
+                                        <Box>
+                                    <ZeroExActionsWithNotifications contractWrappers={this.state.contractWrappers}
+                                        web3Wrapper={this.state.web3Wrapper}
+                                    />
+                                    </Box>
+                                    </Container>
+                                    </div>
+                                    </ToastProvider>
+                                    </div>
+                                    <div className="container4">
+                                    <ToastProvider>
+                                        <Container>
+                                            <Box>
+                                    <Faucet web3Wrapper={this.state.web3Wrapper} />
+                                    </Box>
+                                    </Container>
+                                </ToastProvider>
+                                </div>
+                            </div>
+                        )}
+                        {!this.state.web3 && <InstallMetamask />}
+                    </Content>
+                    <Footer />
+                </div>
             </Router>
         );
     }
