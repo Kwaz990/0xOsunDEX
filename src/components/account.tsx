@@ -184,7 +184,7 @@ export class Account extends React.Component<Props, AccountState> {
         }
 
         return (
-            <Content style={{ marginTop: '15px' }}>
+            <Content style={{ marginTop: '7px' }}>
                 Below you will find the Account and token balances. The lock icon ({' '}
                 <Icon isSize="small" className="fa fa-lock" /> ) indicates that this token is not tradeable on 0x, to
                 unlock the token click the lock icon. The tick icon ({' '}

@@ -1,0 +1,58 @@
+body {
+    padding: 0;
+    font-family: sans-serif;
+  }
+.container1 { 
+    display: flex; /* or inline-flex */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+      }
+    
+.container2 { 
+    display: flex;
+    align-items: center;
+    align-content: center;
+    }  
+.container3 { 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+
+    }    
+.accounts {
+    flex-grow: 1;
+    flex-shrink: 2;
+    flex-basis: auto;
+    width: 100px;
+    height: 100px;
+    margin: auto
+        }
+.orderBox {
+    flex-grow: 3;
+    flex-shrink: 1;
+    flex-basis: auto;
+    width: 100px;
+    height: 300px;
+    margin: auto;
+    } 
+
+.availableMarkets {
+    flex-grow: 1;
+    flex-shrink: 4;
+    flex-basis:auto;
+
+}
+.chart {
+    flex-grow: 2;
+    flex-shrink: 1;
+    flex-basis:auto;
+    }
+.container4 { 
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    align-content: center;
+    }      

@@ -86,53 +86,52 @@ export class MainApp extends React.Component<{}, AppState> {
                     <Content>
                         {this.state.web3 && (
                             <div>
-                            <div className="container1">
-                                <div className="intro">
-                                <NavContainer />
-                                <Description />
-                                </div>
+                                <div className="container1">
+                                    <div className="intro">
+                                        <NavContainer />
+                                        <Description />
+                                    </div>
                                 </div>
                                 <div className="container2">
-                                <div className="availableMarkets">
-                                <Container>
-                                    <Box isFullWidth={false}>
-                                        <AvaialbleMarkets />
-                                    </Box>
-                                </Container>
-                                </div>
+                                    <div className="flex-item1">
+                                        <Container>
+                                            <Box isFullWidth={false}>
+                                                <AvaialbleMarkets />
+                                            </Box>
+                                        </Container>
+                                    </div>
                                 </div>
                                 <div className="container3">
-                                <ToastProvider>
-                                    <div className="accounts">
-                                    <Container>
-                                        <Box>
-                                    <AccountWithNotifications
-                                        erc20TokenWrapper={this.state.contractWrappers.erc20Token}
-                                        web3Wrapper={this.state.web3Wrapper}
-                                    />
-                                    </Box>
-                                    </Container>
-                                    </div>
-                                    <div className="orderBox">
-                                    <Container>
-                                        <Box>
-                                    <ZeroExActionsWithNotifications contractWrappers={this.state.contractWrappers}
-                                        web3Wrapper={this.state.web3Wrapper}
-                                    />
-                                    </Box>
-                                    </Container>
-                                    </div>
-                                    </ToastProvider>
-                                    </div>
-                                    <div className="container4">
                                     <ToastProvider>
-                                        <Container>
+                                        <div className="flex-item1">
+                                            <Container>
                                             <Box>
-                                    <Faucet web3Wrapper={this.state.web3Wrapper} />
-                                    </Box>
-                                    </Container>
-                                </ToastProvider>
-                                </div>
+                                                    <ZeroExActionsWithNotifications contractWrappers={this.state.contractWrappers}
+                                                        web3Wrapper={this.state.web3Wrapper}
+                                                    />
+                                                </Box>
+                                            </Container>
+                                        </div>
+                                        <div className="flex-item1">
+                                            <Container>
+                                            <Box isFullWidth={false}>
+                                                    <AccountWithNotifications
+                                                        erc20TokenWrapper={this.state.contractWrappers.erc20Token}
+                                                        web3Wrapper={this.state.web3Wrapper}
+                                                    />
+                                                </Box>
+                                            </Container>
+                                        </div>
+                                        <div className="flex-item1">
+                                            <Container>
+                                                <Box>
+                                                    <Faucet web3Wrapper={this.state.web3Wrapper} />
+                                                </Box>
+                                            </Container>
+                                        </div>
+                                        </ToastProvider>
+                                    </div>
+                                
                             </div>
                         )}
                         {!this.state.web3 && <InstallMetamask />}

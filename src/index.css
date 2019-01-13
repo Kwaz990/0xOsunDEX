@@ -1,13 +1,14 @@
+
 body {
     padding: 0;
     font-family: sans-serif;
+    margin-bottom: 80px
   }
 .container1 { 
     display: flex; /* or inline-flex */
     flex-direction: column;
     justify-content: center;
-    align-items: center
-
+    align-items: center;
       }
     
 .container2 { 
@@ -15,43 +16,72 @@ body {
     align-items: center;
     align-content: center;
     }  
-.container3 { 
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
 
-    }    
-.accounts {
-    flex-grow: 2;
-    flex-shrink: 1;
-    flex-basis:auto;
-        }
-.orderBox {
-    flex-grow: 3;
-    flex-shrink: 1;
-    flex-basis:auto;
-    } 
+.container3 {
+  padding-left: 50;
+  padding-right: 0;
+  list-style: none;
+  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  
+  align-items: center;
+  align-content: center;
 
-
-
-
-    
-.availableMarkets {
-    flex-grow: 1;
-    flex-shrink: 4;
-    flex-basis:auto;
-
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  justify-content: center;
 }
-.chart {
-    flex-grow: 2;
-    flex-shrink: 1;
-    flex-basis:auto;
-    }
-.container4 { 
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap-reverse;
-    align-items: center;
-    align-content: center;
-    }      
+
+.flex-item1 {
+  background: white;
+  padding: 5px;
+  padding-left:auto;
+  padding-right: 0;
+  flex: 1 1 auto; 
+  margin-top: 1px;
+  margin-left: 50;
+  margin-right: 0;
+
+
+  
+  line-height: 15px;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+  align-self: auto
+}
+
+
+.flex-item2 {
+    background: rgb(247, 245, 245);
+    padding: 5px;
+    width: 20px;
+    height: 15px;
+    margin-top: 1px;
+    
+    line-height: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+    align-self: auto
+  }
+  .flex-item3 {
+    background: rgb(247, 245, 245);
+    padding: 5px;
+    width: 20px;
+    height: 15px;
+    margin-top: 1px;
+    
+    line-height: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+    align-self: flex-end
+  }
