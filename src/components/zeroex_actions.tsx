@@ -9,6 +9,7 @@ import { CreateOrder } from './zeroex_actions/create_order';
 import { FillOrder } from './zeroex_actions/fill_order';
 import { GetOrderInfo } from './zeroex_actions/order_info';
 import { WrapEth } from './zeroex_actions/wrap_eth';
+import {SellOrder} from './zeroex_actions/sell_order'
 
 interface Props {
     contractWrappers: ContractWrappers;
@@ -18,6 +19,7 @@ interface Props {
 
 enum FormType {
     CREATE = 'Create',
+    SELL = 'Sell',
     FILL = 'Fill',
     CANCEL = 'Cancel',
     WRAP_ETH = 'Wrap ETH',
@@ -52,6 +54,9 @@ export class ZeroExActions extends React.Component<Props, ZeroExActionsState> {
         switch (selectedForm) {
             case FormType.CREATE:
                 currentFormRender = <CreateOrder {...defaultProps} />;
+                break;
+            case FormType.SELL:
+                currentFormRender = <SellOrder {...defaultProps} />;
                 break;
             case FormType.CANCEL:
                 currentFormRender = <CancelOrder {...defaultProps} />;

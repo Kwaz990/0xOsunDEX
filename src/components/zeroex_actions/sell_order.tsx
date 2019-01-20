@@ -38,14 +38,14 @@ enum TraderSide {
     TAKER,
 }
 
-export class CreateOrder extends React.Component<Props, CreateOrderState> {
+export class SellOrder extends React.Component<Props, CreateOrderState> {
     constructor(props: Props) {
         super(props);
         this.state = {
             makerTokenSymbol: TOKENS.ZRX.symbol,
             takerTokenSymbol: TOKENS.WETH.symbol,
             makerAmount: '1',
-            takerAmount: '1'
+            takerAmount: '1',
         };
     }
     public createOrderAsync = async (): Promise<SignedOrder> => {
@@ -110,10 +110,10 @@ export class CreateOrder extends React.Component<Props, CreateOrderState> {
                 </PanelBlockField>
             </div>
         ) : (
-                <div />
-            );
+            <div />
+        );
         const makerTokenRender = (
-            <PanelBlockField label="Buy Token">
+            <PanelBlockField label="Sell WETH">
                 <Field hasAddons={true}>
                     <Control>{this.buildTokenSelector(TraderSide.MAKER)}</Control>
                     <Input
@@ -121,7 +121,6 @@ export class CreateOrder extends React.Component<Props, CreateOrderState> {
                         value={this.state.makerAmount}
                         type="text"
                         placeholder="Amount to Buy"
-                        id='numTokenBuy'
                     />
                 </Field>
             </PanelBlockField>
@@ -136,7 +135,6 @@ export class CreateOrder extends React.Component<Props, CreateOrderState> {
                             value={this.state.takerAmount}
                             type="text"
                             placeholder="Price WETH"
-                            id='priceWETH'
                         />
                     </Control>
                 </Field>
@@ -149,25 +147,11 @@ export class CreateOrder extends React.Component<Props, CreateOrderState> {
                         <img src='https://0xproject.com/images/token_icons/WETH.png' height="40" width="40"></img>
                     </Control>
                     <Control isExpanded={true}>
-                        <Input isColor='success' placeholder='Text Input' value='TotalWETH' />
+                        <Input isColor='danger' placeholder='Text Input' value='TotalWETH' />
                     </Control>
                 </Field>
             </PanelBlockField>
         );
-
-
-/*
-        function doMath() {
-            // Capture the entered values of two input boxes
-            var my_input1 = (document.getElementById('numTokenBuy') as HTMLTextAreaElement).value;
-            var my_input2 = (document.getElementById('priceWETH') as HTMLTextAreaElement).value;
-
-            // Add them together and display
-            var product = parseInt(my_input1) * parseInt(my_input2);
-            return product;
-        }
-
-*/
         const errorMessageRender = this.state.errorMessage ? <div>{this.state.errorMessage}</div> : <div />;
         return (
             <div>
@@ -183,8 +167,8 @@ export class CreateOrder extends React.Component<Props, CreateOrderState> {
                 {errorMessageRender}
                 {signedOrderRender}
                 <PanelBlock>
-                    <Button onClick={this.createOrderAsync} isFullWidth={true} isSize="small" isColor="primary">
-                        Place Buy Order
+                    <Button onClick={this.createOrderAsync} isFullWidth={true} isSize="small" isColor="danger">
+                        Place Sell Order
                     </Button>
                 </PanelBlock>
             </div>
@@ -223,9 +207,9 @@ export class CreateOrder extends React.Component<Props, CreateOrderState> {
         const selected = this.state.takerTokenSymbol;
         return (
             <Select value={selected}>
-                <option value={selected}>
-                    {selected}
-                </option>
+                        <option value={selected}>
+                            {selected}
+                        </option>
             </Select>
         );
     }
