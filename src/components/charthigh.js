@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import ApexChart from "react-apexcharts";
+import * as Highcharts from 'highcharts/highstock';
+import HighchartsReact from 'highcharts-react-official'
 
 
 // THis is a dummy list that allows you to have data points <= length of the dummy list
@@ -9,35 +11,12 @@ for (let i = 0; i < 1000; i++) {
     dumbshit.push([0, [0, 0, 0, 0]])
 }
 
-class Chart1 extends Component {
+class Charthigh extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isLoading: false,
             options: {
-                xaxis: {
-                    type: 'datetime',
-                    labels: {
-                        show: true,
-                        rotate: -45,
-                        rotateAlways: false,
-                        hideOverlappingLabels: true,
-                        showDuplicates: false,
-                        trim: true,
-                        minHeight: undefined,
-                        maxHeight: 120,                        
-                    }
-                },
-                yaxis: {
-                    title: {
-                        text: "Price WETH",
-                        align: "left"
-                    },
-                },
-                title: {
-                    text: String(this.props.market),
-                    align: "center"
-                },
                 chart: {
                     id: "MainChart",
                     width: '100%',
@@ -53,6 +32,31 @@ class Chart1 extends Component {
                             enabled: true,
                             speed: 350
                         }
+                    },
+                    xaxis: {
+                        type: 'datetime',
+                        labels: {
+                            show: true,
+                            rotate: -45,
+                            rotateAlways: false,
+                            hideOverlappingLabels: true,
+                            showDuplicates: false,
+                            trim: true,
+                            minHeight: undefined,
+                            maxHeight: 120,
+                            /*
+                            datetimeFormatter: {
+                                year: 'yyyy',
+                                month: "MMM 'yy",
+                                day: 'dd MMM',
+                                hour: 'HH:mm',
+                            }
+                            */
+                        }
+                    },
+                    title: {
+                        text: this.props.market,
+                        align: "left"
                     },
                     dataLabels: {
                         enabled: false,
@@ -122,7 +126,7 @@ class Chart1 extends Component {
                             Number(bar.close)
                         ]]
                     ))
-                    console.log('this is what you want', x)
+
                     return x;
                 }).then(function (bar) {
                     graph.setState({
@@ -145,16 +149,15 @@ class Chart1 extends Component {
         var value = String(this.props.market)
         const marketRedirect = this.props.marketRedirect;
         return (
-                    <div id="chartMain">
-                        <ApexChart
-                            options={this.state.options}
-                            series={this.state.series}
-                            type="candlestick"
-                            width="800"
-                        />
-                    </div>
+            <div id="chartMain">
+                <HighchartsReact
+                    highcharts={Highcharts}
+                    constructorType={'stockChart'}
+                    options={this.state.options}
+                />
+            </div>
 
         );
     }
 }
-export default Chart1;
+export default Charthigh;

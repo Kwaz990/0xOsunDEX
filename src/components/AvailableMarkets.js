@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 import Chart1 from './chart2';
+//import Charthigh from "./charthigh";
+//import Stockchart from "./stockchart"
 //import Markets from './Markets';
 //import Tokens from './Tokens/all';
 import "./UI.css";
@@ -36,7 +38,9 @@ class AvailableMarkets extends Component {
            [
              market.id,
              market.displayName
-           ]))
+           ]));
+           //filter the list here and set it to state. Then it will be displayed with link later
+           console.log('this is waht you want',x.filter(market => ['MKR-WETH', 'MKR/WETH']))
            return x;
            }).then(function(market) {
             this.setState({
