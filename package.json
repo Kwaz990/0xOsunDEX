@@ -1,9 +1,9 @@
 {
-  "name": "osunreact0x",
+  "name": "osundex",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
-  "homepage": "https://0xproject.com",
+  "homepage": "https://osundex.tk",
   "license": "Apache-2.0",
   "main": "src/index.tsx",
   "dependencies": {

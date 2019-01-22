@@ -149,7 +149,7 @@ export class CreateOrder extends React.Component<Props, CreateOrderState> {
                         <img src='https://0xproject.com/images/token_icons/WETH.png' height="40" width="40"></img>
                     </Control>
                     <Control isExpanded={true}>
-                        <Input isColor='success' placeholder='Text Input' value='TotalWETH' />
+                        <Input id="totalWETH" isColor='success' placeholder='Text Input' value={Number(this.state.makerAmount) * Number(this.state.takerAmount)} />
                     </Control>
                 </Field>
             </PanelBlockField>

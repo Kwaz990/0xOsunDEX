@@ -7,6 +7,7 @@ import Chart1 from './chart2';
 //import Markets from './Markets';
 //import Tokens from './Tokens/all';
 import "./UI.css";
+import { TOKENS, TOKENS_BY_NETWORK } from '../tokens';
 
 
 
@@ -39,6 +40,20 @@ class AvailableMarkets extends Component {
              market.id,
              market.displayName
            ]));
+
+           // var subtokenList = Object.keys(TOKENS)
+           var subtokenList = ["GNT", "MKR", "ZRX", "REP"]
+           var excludedList = ["DAI"]
+
+           var filteredX = x.filter(element =>
+               subtokenList.some(y => element[0].includes(y)) &&
+               !excludedList.some(y => element[0].includes(y))
+               )
+
+           console.log('this is X', x)
+           console.log('this is filteredX', filteredX)
+           console.log(TOKENS)
+           console.log(TOKENS_BY_NETWORK)
            //filter the list here and set it to state. Then it will be displayed with link later
            console.log('this is waht you want',x.filter(market => ['MKR-WETH', 'MKR/WETH']))
            return x;
