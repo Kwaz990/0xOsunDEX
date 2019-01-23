@@ -21,6 +21,7 @@ class AvailableMarkets extends Component {
         this.state = {
           radarMarkets: [],
           isLoading: false,
+          shortList: []
         };
       }
     
@@ -41,14 +42,17 @@ class AvailableMarkets extends Component {
              market.displayName
            ]));
 
+
+
+           //The following code filters the radar relay markets to align with the tokens.ts file
            // var subtokenList = Object.keys(TOKENS)
            var subtokenList = ["GNT", "MKR", "ZRX", "REP"]
            var excludedList = ["DAI"]
 
            var filteredX = x.filter(element =>
                subtokenList.some(y => element[0].includes(y)) &&
-               !excludedList.some(y => element[0].includes(y))
-               )
+               !excludedList.some(y => element[0].includes(y)))
+            
 
            console.log('this is X', x)
            console.log('this is filteredX', filteredX)
@@ -56,7 +60,8 @@ class AvailableMarkets extends Component {
            console.log(TOKENS_BY_NETWORK)
            //filter the list here and set it to state. Then it will be displayed with link later
            console.log('this is waht you want',x.filter(market => ['MKR-WETH', 'MKR/WETH']))
-           return x;
+           //To get the original long list simply return x instead of filteredX
+           return filteredX;
            }).then(function(market) {
             this.setState({
                 radarMarkets: market,

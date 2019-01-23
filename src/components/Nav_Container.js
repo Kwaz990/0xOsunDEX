@@ -23,9 +23,6 @@ function NavContainer({ location }) {
         Osun DEX: 
         <ul >
         <Link to = "/">Home        </Link>
-        <Link to = "/Markets">Markets        </Link>
-        <Route path="/OsunTokenSale" component={OsunTokenSale} />
-        <Link to = "/OsunTokenSale">Token Sale</Link>
         </ul>
         </Switch>
         </section>
