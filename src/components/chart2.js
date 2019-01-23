@@ -5,7 +5,7 @@ import ApexChart from "react-apexcharts";
 // THis is a dummy list that allows you to have data points <= length of the dummy list
 // this is necessary for the API pull
 var dumbshit = []
-for (let i = 0; i < 1000; i++) {
+for (let i = 0; i < 100; i++) {
     dumbshit.push([0, [0, 0, 0, 0]])
 }
 

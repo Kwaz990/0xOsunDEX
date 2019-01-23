@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 import Chart1 from './chart2';
-//import Charthigh from "./charthigh";
+import Charthigh from "./charthigh";
 //import Stockchart from "./stockchart"
 //import Markets from './Markets';
 //import Tokens from './Tokens/all';
@@ -85,7 +85,7 @@ class AvailableMarkets extends Component {
                         console.log(match.match.params);
                         return(
                         <div className="chart">
-                        <Chart1 market={match.match.params.symbol} marketRedirect={null} />
+                        <Charthigh market={match.match.params.symbol} marketRedirect={null} />
                         </div>)
                     }} />
                     </div>

@@ -6,86 +6,30 @@ import HighchartsReact from 'highcharts-react-official'
 
 // THis is a dummy list that allows you to have data points <= length of the dummy list
 // this is necessary for the API pull
+/*
 var dumbshit = []
 for (let i = 0; i < 1000; i++) {
     dumbshit.push([0, [0, 0, 0, 0]])
 }
-
+*/
 class Charthigh extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isLoading: false,
             options: {
-                chart: {
-                    id: "MainChart",
-                    width: '100%',
-                    animations: {
-                        enabled: false,
-                        easing: 'easeinout',
-                        speed: 800,
-                        animateGradually: {
-                            enabled: true,
-                            delay: 150
-                        },
-                        dynamicAnimation: {
-                            enabled: true,
-                            speed: 350
-                        }
-                    },
-                    xaxis: {
-                        type: 'datetime',
-                        labels: {
-                            show: true,
-                            rotate: -45,
-                            rotateAlways: false,
-                            hideOverlappingLabels: true,
-                            showDuplicates: false,
-                            trim: true,
-                            minHeight: undefined,
-                            maxHeight: 120,
-                            /*
-                            datetimeFormatter: {
-                                year: 'yyyy',
-                                month: "MMM 'yy",
-                                day: 'dd MMM',
-                                hour: 'HH:mm',
-                            }
-                            */
-                        }
-                    },
                     title: {
                         text: this.props.market,
                         align: "left"
                     },
-                    dataLabels: {
-                        enabled: false,
-                        formatter: function (val, opts) {
-                            return val
-                        },
-                        textAnchor: 'middle',
-                        offsetX: 0,
-                        offsetY: 0,
-                        style: {
-                            fontSize: '14px',
-                            fontFamily: 'Helvetica, Arial, sans-serif',
-                            colors: undefined
-                        },
-                        dropShadow: {
-                            enabled: false,
-                            top: 1,
-                            left: 1,
-                            blur: 1,
-                            opacity: 0.45
-                        }
-                    }
-                },
-            },
             series: [{
-                data: dumbshit
+                type: 'candlestick',
+                name: this.props.market,
+                data: [] //for highcharts the data must be in the for [x, open, high, low, close] where x is the timestamp
             }]
-        };
+        },
     }
+};
     /*
     graph.setState({
                     isLoading: false,
@@ -102,13 +46,15 @@ class Charthigh extends Component {
                     }]
                 })
 */
+
+
     componentDidMount() {
         var marketLink = this.props.market;
         // var marketLink="ZRX-WETH";
         var graph = this;
         var url = "https://api.radarrelay.com/v2/markets/" + marketLink + "/candles"
         var oldurl = "https://api.radarrelay.com/v2/markets/ZRX-WETH/candles"
-        console.log(marketLink)
+        //console.log(marketLink)
         if (typeof (marketLink) === 'string' && marketLink !== 'undefined') {
             console.log("True", marketLink)
             fetch(url)
@@ -119,32 +65,28 @@ class Charthigh extends Component {
                     return response.json();
                 }).then(function (data) {
                     var x = data.map(bar => (
-                        [bar.startBlockTimestamp, [
+                        [bar.startBlockTimestamp, 
                             Number(bar.open),
                             Number(bar.high),
                             Number(bar.low),
                             Number(bar.close)
-                        ]]
+                        ]
                     ))
-
+                    console.log()
+                   // console.log('this is bar', bar)
                     return x;
                 }).then(function (bar) {
-                    graph.setState({
+                graph.setState({
                         isLoading: false,
                         options: {
-                            chart: {
-                                id: "candlestick"
-                            },
-                        },
-                        series: [{
-                            data: bar
-                        }]
-                    });
+                    series: [{
+                        type: 'candlestick',
+                        data: bar //for highcharts the data must be in the for [x, open, high, low, close] where x is the timestamp
+                    }]
+                    }});
                 })
         }
     };
-
-
     render(props) {
         var value = String(this.props.market)
         const marketRedirect = this.props.marketRedirect;

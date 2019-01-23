@@ -15,7 +15,7 @@
     "@0x/web3-wrapper": "^3.1.0",
     "@types/mocha": "^5.2.5",
     "@types/react-router-dom": "^4.3.1",
-    "apexcharts": "^2.5.0",
+    "apexcharts": "^2.6.0",
     "bloomer": "^0.6.3",
     "bulma": "^0.7.2",
     "codesandbox-api": "^0.0.20",
