@@ -17,6 +17,6 @@ export const networkToRPCURI = {
     1: 'https://mainnet.infura.io',
     3: 'https://ropsten.infura.io',
     4: 'https://rinkeby.infura.io',
-    42: 'https://kovan.infura.io',
+    42: 'https://kovan.infura.io/v3/1c8e1e74645d4a149ca32efbde6cb628',
     50: 'http://localhost:8545',
 };
