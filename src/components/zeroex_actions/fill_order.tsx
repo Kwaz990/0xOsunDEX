@@ -1,8 +1,8 @@
 import { ContractWrappers, SignedOrder } from '0x.js';
 import { Web3Wrapper } from '@0x/web3-wrapper';
-import { Button, PanelBlock, TextArea } from 'bloomer';
+import { PanelBlock, TextArea } from 'bloomer';
 import * as React from 'react';
-
+//import signedOrder from './create_order';
 import { parseJSONSignedOrder } from '../../utils';
 //import { OpenModule } from '../open_module';
 import { PanelBlockField } from '../panel_block_field';
@@ -47,16 +47,6 @@ export class FillOrder extends React.Component<Props, FillOrderState> {
                         }}
                     />
                 </PanelBlockField>
-                <PanelBlock>
-                    <Button
-                        onClick={this.fillOrderClick.bind(this)}
-                        isFullWidth={true}
-                        isSize="small"
-                        isColor="primary"
-                    >
-                        Fill Order
-                    </Button>
-                </PanelBlock>
             </div>
         );
     }

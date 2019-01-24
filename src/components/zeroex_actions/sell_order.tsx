@@ -9,9 +9,10 @@ import {
     SignedOrder,
 } from '0x.js';
 import { Web3Wrapper } from '@0x/web3-wrapper';
-import { Button, Control, Field, Input, PanelBlock, Select, TextArea } from 'bloomer';
+import { Button, Control, Field, Input, PanelBlock, Select, TextArea, Notification, Delete } from 'bloomer';
 import * as _ from 'lodash';
 import * as React from 'react';
+import { HttpClient } from '@0x/connect';
 
 import { TOKENS, TOKENS_BY_NETWORK } from '../../tokens';
 import { NULL_ADDRESS, ZERO } from '../../utils';
@@ -49,6 +50,10 @@ export class SellOrder extends React.Component<Props, CreateOrderState> {
         };
     }
     public createOrderAsync = async (): Promise<SignedOrder> => {
+                // Instantiate relayer client pointing to a local server on port 3000
+                const relayerApiUrl = 'http://localhost:3000/v2';
+                const relayerClient = new HttpClient(relayerApiUrl);
+                const httpClient = relayerClient;
         const { makerTokenSymbol, makerAmount, takerTokenSymbol, takerAmount } = this.state;
         const { web3Wrapper, contractWrappers } = this.props;
         // Query the available addresses
@@ -93,6 +98,14 @@ export class SellOrder extends React.Component<Props, CreateOrderState> {
             const signedOrder = await signatureUtils.ecSignOrderAsync(provider, order, makerAddress);
             // Store the signed Order
             this.setState(prevState => ({ ...prevState, signedOrder, orderHash: orderHashHex }));
+            const submitOrderSuccess = (
+                <Notification isColor='primary'>
+                    <Delete />
+                        Order Successfully Submitted!
+                    </Notification>
+            )
+            await httpClient.submitOrderAsync(signedOrder, { networkId: networkId });
+            submitOrderSuccess;
             return signedOrder;
         } catch (err) {
             this.setState({ errorMessage: err.message });
@@ -126,7 +139,7 @@ export class SellOrder extends React.Component<Props, CreateOrderState> {
             </PanelBlockField>
         );
         const takerTokenRender = (
-            <PanelBlockField label="Price WETH">
+            <PanelBlockField label="WETH">
                 <Field hasAddons={true}>
                     <Control>{this.wethMarkets(TraderSide.TAKER)}</Control>
                     <Control isExpanded={true}>
@@ -134,12 +147,14 @@ export class SellOrder extends React.Component<Props, CreateOrderState> {
                             onChange={(e: any) => this.orderTokenAmountChanged(e.target.value, TraderSide.TAKER)}
                             value={this.state.takerAmount}
                             type="text"
-                            placeholder="Price WETH"
+                            placeholder="WETH"
                         />
                     </Control>
                 </Field>
             </PanelBlockField>
         );
+
+        /*
         const totalTokenRender = (
             <PanelBlockField label="Total WETH">
                 <Field hasAddons={true}>
@@ -152,6 +167,7 @@ export class SellOrder extends React.Component<Props, CreateOrderState> {
                 </Field>
             </PanelBlockField>
         );
+        */
         const errorMessageRender = this.state.errorMessage ? <div>{this.state.errorMessage}</div> : <div />;
         return (
             <div>
@@ -163,7 +179,6 @@ export class SellOrder extends React.Component<Props, CreateOrderState> {
                 </PanelBlock>
                 {makerTokenRender}
                 {takerTokenRender}
-                {totalTokenRender}
                 {errorMessageRender}
                 {signedOrderRender}
                 <PanelBlock>

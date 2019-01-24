@@ -30,7 +30,7 @@ export class Faucet extends React.Component<Props, {}> {
     public dispenseETH = async (): Promise<void> => {
         const addresses = await this.props.web3Wrapper.getAvailableAddressesAsync();
         const address = addresses[0];
-        const url = `https://faucet.0xproject.com/ether/${address}`;
+        const url = `https://faucet.0x.org/ether/${address}`;
         await fetch(url);
         console.log('Dispense ETH requested');
     }

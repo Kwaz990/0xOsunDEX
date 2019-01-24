@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ApexChart from "react-apexcharts";
 import * as Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official'
+import { BigNumber } from '0x.js';
 
 
 // THis is a dummy list that allows you to have data points <= length of the dummy list
@@ -65,14 +66,14 @@ class Charthigh extends Component {
                     return response.json();
                 }).then(function (data) {
                     var x = data.map(bar => (
-                        [bar.startBlockTimestamp, 
+                        [Number(bar.startBlockTimestamp * 1000), 
                             Number(bar.open),
                             Number(bar.high),
                             Number(bar.low),
                             Number(bar.close)
                         ]
                     ))
-                    console.log()
+                    console.log('these are chart candles', x)
                    // console.log('this is bar', bar)
                     return x;
                 }).then(function (bar) {
