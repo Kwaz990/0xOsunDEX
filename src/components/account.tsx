@@ -185,12 +185,11 @@ export class Account extends React.Component<Props, AccountState> {
 
         return (
             <Content style={{ marginTop: '7px' }}>
-                Below you will find the Account and token balances. The lock icon ({' '}
-                <Icon isSize="small" className="fa fa-lock" /> ) indicates that this token is not tradeable on 0x, to
+                Account Balances - The lock icon ({' '}
+                <Icon isSize="small" className="fa fa-lock" /> ) indicates that this token is not tradeable. Please 
                 unlock the token click the lock icon. The tick icon ({' '}
-                <Icon isSize="small" className="fa fa-check-circle" style={{ color: GREEN }} /> ) indicates that this
-                token is tradeable on 0x. Some tokens are mintable on the test networks (up to a certain amount) you can
-                mint tokens by clicking the mint ( <Icon isSize="small" className="fa fa-coins" /> ) symbol.
+                <Icon isSize="small" className="fa fa-check-circle" style={{ color: GREEN }} /> ) indicates the
+                token is tradeable. Mint tokens on test networks by clicking the mint ( <Icon isSize="small" className="fa fa-coins" /> ) symbol.
                 <Subtitle isSize={6}>
                     <Tag>Account</Tag> {selectedAccount}
                 </Subtitle>

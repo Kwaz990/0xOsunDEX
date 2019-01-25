@@ -18,7 +18,7 @@ interface Props {
 }
 
 enum FormType {
-    CREATE = 'Create',
+    BUY = 'Buy',
     SELL = 'Sell',
     FILL = 'Fill',
     CANCEL = 'Cancel',
@@ -30,7 +30,7 @@ interface ZeroExActionsState {
 }
 
 export class ZeroExActions extends React.Component<Props, ZeroExActionsState> {
-    public state = { selectedForm: FormType.CREATE };
+    public state = { selectedForm: FormType.BUY };
     public onTxSubmitted = async (txHash: string) => {
         const { toastManager, web3Wrapper } = this.props;
         if (txHash) {
@@ -52,7 +52,7 @@ export class ZeroExActions extends React.Component<Props, ZeroExActionsState> {
         const defaultProps = { web3Wrapper, contractWrappers, onTxSubmitted: this.onTxSubmitted };
         let currentFormRender;
         switch (selectedForm) {
-            case FormType.CREATE:
+            case FormType.BUY:
                 currentFormRender = <CreateOrder {...defaultProps} />;
                 break;
             case FormType.SELL:

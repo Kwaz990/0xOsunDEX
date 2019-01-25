@@ -126,7 +126,7 @@ export class SellOrder extends React.Component<Props, CreateOrderState> {
             <div />
         );
         const makerTokenRender = (
-            <PanelBlockField label="Sell WETH">
+            <PanelBlockField label="Sell Token">
                 <Field hasAddons={true}>
                     <Control>{this.buildTokenSelector(TraderSide.MAKER)}</Control>
                     <Input
@@ -173,8 +173,7 @@ export class SellOrder extends React.Component<Props, CreateOrderState> {
             <div>
                 <PanelBlock>
                     <div>
-                        Creates a 0x order, specifying the Maker and Taker tokens and their amounts. Orders are signed
-                        by the maker. Takers find these signed orders and "fill" them by submitting to the blockchain.
+                        Creates a 0x order, specifying the Maker and Taker tokens and their amounts.
                     </div>
                 </PanelBlock>
                 {makerTokenRender}
