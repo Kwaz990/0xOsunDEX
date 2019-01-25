@@ -47,6 +47,15 @@ export class FillOrder extends React.Component<Props, FillOrderState> {
                         }}
                     />
                 </PanelBlockField>
+                <PanelBlock>
+                    <Button
+                        onClick={this.fillOrderClick.bind(this)}
+                        isFullWidth={true}
+                        isSize="small"
+                        isColor="primary"
+                    >
+                        Fill Order
+                    </Button>
             </div>
         );
     }
