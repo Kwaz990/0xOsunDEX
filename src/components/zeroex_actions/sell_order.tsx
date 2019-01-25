@@ -51,7 +51,7 @@ export class SellOrder extends React.Component<Props, CreateOrderState> {
     }
     public createOrderAsync = async (): Promise<SignedOrder> => {
                 // Instantiate relayer client pointing to a local server on port 3000
-                const relayerApiUrl = 'http://localhost:3000/v2';
+                const relayerApiUrl = 'http://142.93.65.130:3000/v2';
                 const relayerClient = new HttpClient(relayerApiUrl);
                 const httpClient = relayerClient;
         const { makerTokenSymbol, makerAmount, takerTokenSymbol, takerAmount } = this.state;
